@@ -1,0 +1,101 @@
+# the list of warnings below was taken from
+# https://github.com/lefticus/cppbestpractices/blob/master/02-Use_the_Tools_Available.md
+list(APPEND GNU_C_WARNINGS "-Wall")
+list(APPEND GNU_C_WARNINGS "-Wextra")
+list(APPEND GNU_C_WARNINGS "-Wshadow")
+list(APPEND GNU_C_WARNINGS "-Wcast-align")
+list(APPEND GNU_C_WARNINGS "-Wunused")
+list(APPEND GNU_C_WARNINGS "-pedantic")
+list(APPEND GNU_C_WARNINGS "-Wconversion")
+list(APPEND GNU_C_WARNINGS "-Wsign-conversion")
+#list(APPEND GNU_C_WARNINGS "-Wmisleading-indentation")
+#Not working with older gcc versions. See below for fix.
+
+list(APPEND INTEL_C_WARNINGS "-Wall")
+list(APPEND INTEL_C_WARNINGS "-Wextra")
+list(APPEND INTEL_C_WARNINGS "-Wshadow")
+list(APPEND INTEL_C_WARNINGS "-Wunused")
+list(APPEND INTEL_C_WARNINGS "-pedantic")
+list(APPEND INTEL_C_WARNINGS "-Wconversion")
+list(APPEND INTEL_C_WARNINGS "-Wsign-conversion")
+
+list(APPEND CLANG_C_WARNINGS "-Wall")
+list(APPEND CLANG_C_WARNINGS "-Wextra")
+list(APPEND CLANG_C_WARNINGS "-Wshadow")
+list(APPEND CLANG_C_WARNINGS "-Wcast-align")
+list(APPEND CLANG_C_WARNINGS "-Wunused")
+list(APPEND CLANG_C_WARNINGS "-pedantic")
+list(APPEND CLANG_C_WARNINGS "-Wconversion")
+list(APPEND CLANG_C_WARNINGS "-Wsign-conversion")
+
+list(APPEND GNU_CXX_WARNINGS "-Wall")
+list(APPEND GNU_CXX_WARNINGS "-Wextra")
+list(APPEND GNU_CXX_WARNINGS "-Wshadow")
+list(APPEND GNU_CXX_WARNINGS "-Wnon-virtual-dtor")
+list(APPEND GNU_CXX_WARNINGS "-Wold-style-cast")
+list(APPEND GNU_CXX_WARNINGS "-Wcast-align")
+list(APPEND GNU_CXX_WARNINGS "-Wunused")
+list(APPEND GNU_CXX_WARNINGS "-Woverloaded-virtual")
+list(APPEND GNU_CXX_WARNINGS "-pedantic")
+list(APPEND GNU_CXX_WARNINGS "-Wconversion")
+list(APPEND GNU_CXX_WARNINGS "-Wsign-conversion")
+#list(APPEND GNU_CXX_WARNINGS "-Wmisleading-indentation") 
+#Not working with older g++ versions. See below for fix.
+
+list(APPEND INTEL_CXX_WARNINGS "-Wall")
+list(APPEND INTEL_CXX_WARNINGS "-Wextra")
+list(APPEND INTEL_CXX_WARNINGS "-Wshadow")
+list(APPEND INTEL_CXX_WARNINGS "-Wnon-virtual-dtor")
+list(APPEND INTEL_CXX_WARNINGS "-Wunused")
+list(APPEND INTEL_CXX_WARNINGS "-Woverloaded-virtual")
+list(APPEND INTEL_CXX_WARNINGS "-pedantic")
+list(APPEND INTEL_CXX_WARNINGS "-Wconversion")
+list(APPEND INTEL_CXX_WARNINGS "-Wsign-conversion")
+
+list(APPEND CLANG_CXX_WARNINGS "-Wall")
+list(APPEND CLANG_CXX_WARNINGS "-Wextra")
+list(APPEND CLANG_CXX_WARNINGS "-Wshadow")
+list(APPEND CLANG_CXX_WARNINGS "-Wnon-virtual-dtor")
+list(APPEND CLANG_CXX_WARNINGS "-Wold-style-cast")
+list(APPEND CLANG_CXX_WARNINGS "-Wcast-align")
+list(APPEND CLANG_CXX_WARNINGS "-Wunused")
+list(APPEND CLANG_CXX_WARNINGS "-Woverloaded-virtual")
+list(APPEND CLANG_CXX_WARNINGS "-pedantic")
+list(APPEND CLANG_CXX_WARNINGS "-Wconversion")
+list(APPEND CLANG_CXX_WARNINGS "-Wsign-conversion")
+
+if(${CMAKE_C_COMPILER_ID}     MATCHES "GNU")
+  list(APPEND C_WARNINGS ${GNU_C_WARNINGS})
+   if(CMAKE_C_COMPILER_VERSION VERSION_GREATER 6.0)
+    # This option is not available in g++ < 6.0
+    # In g++ >= 6.0 it should be part of -Wall
+    # https://gcc.gnu.org/gcc-6/porting_to.html
+    list(APPEND CXX_WARNINGS "-Wmisleading-indentation")
+  endif()
+elseif(${CMAKE_C_COMPILER_ID} MATCHES "Intel")
+    list(APPEND C_WARNINGS ${INTEL_C_WARNINGS})
+elseif(${CMAKE_C_COMPILER_ID} MATCHES "Clang")
+    list(APPEND C_WARNINGS ${CLANG_C_WARNINGS})
+endif()
+
+if(${CMAKE_CXX_COMPILER_ID}     MATCHES "GNU")
+  list(APPEND CXX_WARNINGS ${GNU_CXX_WARNINGS})
+  if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.0)
+    # This option is not available in g++ < 6.0
+    # In g++ >= 6.0 it should be part of -Wall
+    # https://gcc.gnu.org/gcc-6/porting_to.html
+    list(APPEND CXX_WARNINGS "-Wmisleading-indentation")
+  endif()
+elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Intel")
+    list(APPEND CXX_WARNINGS ${INTEL_CXX_WARNINGS})
+elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
+    list(APPEND CXX_WARNINGS ${CLANG_CXX_WARNINGS})
+endif()
+
+foreach(c_warning IN LISTS C_WARNINGS)
+    set(CMAKE_C_FLAGS "${c_warning} ${CMAKE_C_FLAGS}")
+endforeach()
+
+foreach(cxx_warning IN LISTS CXX_WARNINGS)
+    set(CMAKE_CXX_FLAGS "${cxx_warning} ${CMAKE_CXX_FLAGS}")
+endforeach()

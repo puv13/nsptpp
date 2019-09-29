@@ -1,0 +1,3 @@
+[submodule "otherlibs/HighFive"]
+	path = otherlibs/HighFive
+	url = https://github.com/BlueBrain/HighFive.git

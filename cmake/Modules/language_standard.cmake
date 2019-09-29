@@ -1,0 +1,5 @@
+set(C_STANDARD   "-std=c11")
+set(CXX_STANDARD "-std=c++11")
+
+set(CMAKE_C_FLAGS   "${C_STANDARD}   ${CMAKE_C_FLAGS}")
+set(CMAKE_CXX_FLAGS "${CXX_STANDARD} ${CMAKE_CXX_FLAGS}")

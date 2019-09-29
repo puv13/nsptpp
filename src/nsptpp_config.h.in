@@ -1,0 +1,12 @@
+#pragma once
+
+static char const NSPTPP_GIT_HASH[] = "@GIT_HASH@";
+static char const NSPTPP_BUILD_TIME[] = "@BUILD_TIMESTAMP@";
+#cmakedefine PROJECT "@PROJECT@"
+#define PROJECT_VERSION "@PROJECT_VERSION@"                                      
+                                                                                  
+#define PROJECT_VERSION_MAJOR "@PROJECT_VERSION_MAJOR@"                          
+                                                                                 
+#define PROJECT_VERSION_MINOR "@PROJECT_VERSION_MINOR@"                          
+                                                                                 
+#define PROJECT_VERSION_PATCH "@PROJECT_VERSION_PATCH@"   
