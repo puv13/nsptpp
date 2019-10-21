@@ -14,6 +14,8 @@ An incomplete list of publications related to the NSPTPP code.
 * M. Namiki et al., [Numerical Simulation of Nonlinear &sigma;-Model by Means of Stochastic Quantization Method](http://doi.org/10.1143/ptp.73.186)
 * M. Namiki et al., [New Procedure of Numerical Simulation of Long-Range Correlations and Energy Gaps by Stochastic Quantization](http://doi.org/10.1143/ptp.76.501)
 
+#### Improved Second-Order Runge-Kutta Integration Scheme
+* G. Bali et al., [Perturbative expansion of the energy of static sources at large orders in four-dimensional SU(3) gauge theory](https://doi.org/10.1103/PhysRevD.87.094517)
 
 ### Numerical Stochastic Perturbation Theory 
 * F. Di Renzo and L. Scorzato,  [Numerical Stochastic Perturbation Theory for full QCD](http://www.doi.org/10.1088/1126-6708/2004/10/073)
