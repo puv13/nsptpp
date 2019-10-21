@@ -1,4 +1,11 @@
+## Main Authors
+Matthias Puhr  
+Jakob Simeth  
+
+## Contributors
 Gunnar Bali  
-Falk Bruckmann   
-Jakob Simeth   
-Matthias Puhr   
+Falk Bruckmann  
+
+
+*(Listings in alphabetical order)*
+  
