@@ -1,7 +1,7 @@
-# A C++ Framework for NSPT calculations
+# A C++ Framework for NSPT Simulations
 
 NSPTPP is a generic framework for Numerical Stochastic Perturbation Theory (NSPT)
-calculations. The code is written in C++ and heavily relies on templates to make an
+simulations. The code is written in C++ and heavily relies on templates to make an
 adaption for different physical models as simple as possible. 
 
 ## Dependencies 
@@ -36,7 +36,7 @@ The C++ compiler used to build NSPTPP has to support the C++11 standard.
 
 ## Getting started 
 
-### Obtain the NSPTPP code and the highfive library  
+### Obtain the NSPTPP code and the HighFive library  
 
 ```shell
 # Get NSPTPP
